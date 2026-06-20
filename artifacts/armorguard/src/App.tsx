@@ -9,6 +9,7 @@ import Dashboard from "@/pages/dashboard";
 import Scans from "@/pages/scans";
 import Reports from "@/pages/reports";
 import Threats from "@/pages/threats";
+import Fixes from "@/pages/fixes";
 import Agents from "@/pages/agents";
 import History from "@/pages/history";
 import Profile from "@/pages/profile";
@@ -23,6 +24,7 @@ function Router() {
       <Route path="/scans" component={Scans} />
       <Route path="/reports" component={Reports} />
       <Route path="/threats" component={Threats} />
+      <Route path="/fixes" component={Fixes} />
       <Route path="/agents" component={Agents} />
       <Route path="/history" component={History} />
       <Route path="/profile" component={Profile} />

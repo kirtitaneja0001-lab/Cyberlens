@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { LayoutDashboard, Plus, Scan, FileText, Shield, Bot, Clock, User, Settings, Search, ChevronLeft, ChevronRight } from "lucide-react";
+import { LayoutDashboard, Plus, Scan, FileText, Shield, Bot, Clock, User, Settings, Search, ChevronLeft, ChevronRight, Wrench } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useStore } from "@/hooks/use-store";
@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { name: "Scans", href: "/scans", icon: Scan },
   { name: "Reports", href: "/reports", icon: FileText },
   { name: "Threats", href: "/threats", icon: Shield },
+  { name: "Fixes", href: "/fixes", icon: Wrench },
   { name: "Agents", href: "/agents", icon: Bot },
   { name: "History", href: "/history", icon: Clock },
 ];
