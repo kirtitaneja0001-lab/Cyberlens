@@ -1,0 +1,570 @@
+# ARMORGUARD UI REFACTOR - DO NOT REBUILD THE PROJECT
+
+## IMPORTANT
+
+Do NOT rebuild the project.
+
+Do NOT replace the existing application.
+
+Do NOT modify backend logic.
+
+Do NOT modify APIs.
+
+Do NOT remove existing functionality.
+
+This task is ONLY a frontend/UI/UX refactor.
+
+Everything currently working should continue working.
+
+---
+
+# THEME
+
+The current application still looks AI-generated.
+
+I want the entire application redesigned to match the design language of the ArmorIQ website shown in the reference screenshots.
+
+Use those screenshots as the primary design reference.
+
+The application should feel like:
+
+* ArmorIQ
+* Claude
+* Linear
+* Vercel
+
+NOT like a generic AI dashboard.
+
+---
+
+# VISUAL STYLE
+
+Use
+
+* very clean spacing
+* thin typography
+* strict grid
+* enterprise SaaS layout
+* lots of whitespace
+* premium micro animations
+* subtle shadows
+* hairline borders
+* orange accent (#F26A2E)
+
+Remove anything that feels "template generated."
+
+The dashboard should immediately feel professionally designed.
+
+---
+
+# DASHBOARD REDESIGN
+
+Completely redesign the dashboard to resemble the provided ArmorIQ screenshots.
+
+Keep the existing information, but present it much better.
+
+The dashboard should include
+
+* Mission Status
+* Current Scan
+* Active Findings
+* Risk Score
+* Attack Surface Map
+* Live Scan Feed
+* Recent Reports
+* Activity Timeline
+* AI Summary
+
+Everything should be aligned on a clean enterprise grid.
+
+---
+
+# ATTACK SURFACE MAP
+
+Rename the current flow chart to
+
+## Attack Surface Map
+
+This should visually update while a scan is running.
+
+Animate discovered pages.
+
+Animate endpoints.
+
+Animate vulnerabilities.
+
+Animate scan progress.
+
+Show connections between
+
+Target
+
+↓
+
+Subdomains
+
+↓
+
+Endpoints
+
+↓
+
+Vulnerabilities
+
+↓
+
+Recommendations
+
+The map should look alive.
+
+---
+
+# LIVE SCAN EXPERIENCE
+
+When the user clicks
+
+Start Scan
+
+DO NOT immediately show finished results.
+
+Instead copy the experience of Claude.
+
+Show an animated loading state.
+
+Examples
+
+Analyzing target...
+
+Planning scan...
+
+Running reconnaissance...
+
+Discovering endpoints...
+
+Checking technologies...
+
+Testing vulnerabilities...
+
+Generating recommendations...
+
+Preparing report...
+
+Each message should stream one at a time.
+
+Exactly like Claude's responses.
+
+Include
+
+typing animation
+
+thinking animation
+
+streaming effect
+
+scrolling
+
+---
+
+# AI THINKING
+
+Above the live output
+
+show a collapsible block
+
+Thinking
+
+Exactly inspired by Claude.
+
+This contains
+
+* reasoning
+* planning
+* current step
+
+The thinking block expands and collapses.
+
+---
+
+# FINAL RESPONSE
+
+When the scan completes
+
+DO NOT simply show cards.
+
+Instead show a professional AI-generated report.
+
+Structure it like Claude.
+
+Large summary first.
+
+Example
+
+## Executive Summary
+
+"We discovered four medium-risk vulnerabilities and one critical issue affecting authentication. Immediate remediation is recommended."
+
+Below that
+
+show
+
+## Findings
+
+Each finding expands.
+
+Contains
+
+* Severity
+* Description
+* Impact
+* Recommendation
+* Steps to Fix
+* OWASP Category
+* CVSS Score
+
+Then
+
+## Recommended Fixes
+
+Explain exactly what should be changed.
+
+Do not simply list vulnerabilities.
+
+Explain how to fix each one.
+
+Example
+
+❌ Missing Security Headers
+
+Fix:
+
+Add
+
+Content-Security-Policy
+
+Strict-Transport-Security
+
+X-Frame-Options
+
+etc.
+
+Every vulnerability should include an actionable fix.
+
+---
+
+# SIDEBAR
+
+Completely redesign.
+
+Inspired by Claude.
+
+Top
+
+Logo
+
+New Scan
+
+Dashboard
+
+Scans
+
+Reports
+
+Threats
+
+History
+
+Agents
+
+Settings
+
+Profile
+
+Bottom
+
+Recent Scan History
+
+Exactly like Claude's chat history.
+
+Every completed scan automatically appears here.
+
+Example
+
+example.com
+
+Deep Scan
+
+Today
+
+google.com
+
+Default Scan
+
+Yesterday
+
+Clicking a history item opens that report.
+
+No page reload.
+
+Search filters history instantly.
+
+---
+
+# NOTIFICATION BUTTON
+
+Currently does nothing.
+
+Implement it.
+
+Clicking opens a notification panel.
+
+Include
+
+Recent Scan Completed
+
+New Finding
+
+Critical Vulnerability
+
+Report Downloaded
+
+Mark All Read
+
+Clear Notifications
+
+Store notifications in frontend state.
+
+---
+
+# PROFILE BUTTON
+
+Currently does nothing.
+
+Implement a complete profile page.
+
+Include
+
+Avatar
+
+Name
+
+Email
+
+Role
+
+Organization
+
+Statistics
+
+Recent Activity
+
+Preferences
+
+Theme
+
+Save Profile
+
+Persist using localStorage.
+
+---
+
+# SETTINGS PAGE
+
+The following sections currently do not work.
+
+Implement them.
+
+## Security
+
+Password UI
+
+2FA toggle
+
+Session management
+
+Active devices
+
+Save button
+
+---
+
+## Notifications
+
+Email notifications
+
+Desktop notifications
+
+Scan completed
+
+Critical alerts
+
+Weekly report
+
+Each toggle should work.
+
+Persist locally.
+
+---
+
+## API Keys
+
+Professional UI.
+
+Create
+
+Generate Key
+
+Copy
+
+Hide
+
+Delete
+
+Regenerate
+
+Frontend only.
+
+Use placeholder keys.
+
+Persist locally.
+
+---
+
+## Billing
+
+Subscription card
+
+Current Plan
+
+Storage
+
+Reports Used
+
+Upgrade button
+
+Invoices
+
+Payment Method
+
+Everything should work in frontend.
+
+---
+
+# DOWNLOAD PDF
+
+The Download PDF button must generate a real PDF.
+
+Include
+
+ArmorGuard logo
+
+Target
+
+Date
+
+Risk Score
+
+Executive Summary
+
+Attack Surface
+
+Findings
+
+Recommendations
+
+Footer
+
+Generated by ArmorGuard
+
+Generate dynamically.
+
+Do not use placeholder PDFs.
+
+---
+
+# REPORTS
+
+Reports should look like premium audit reports.
+
+Expandable sections.
+
+Severity badges.
+
+Charts.
+
+Professional spacing.
+
+---
+
+# ANIMATIONS
+
+Everything should animate smoothly.
+
+Buttons
+
+Hover
+
+Lift
+
+Cards
+
+Fade
+
+Panels
+
+Slide
+
+Sidebar
+
+Collapse
+
+Thinking block
+
+Typing
+
+Numbers
+
+Count up
+
+Charts
+
+Animate
+
+Nothing should appear instantly.
+
+---
+
+# CLAUDE-STYLE EXPERIENCE
+
+The application should feel conversational.
+
+When a scan starts
+
+the center workspace behaves like Claude.
+
+Thinking appears first.
+
+Streaming output appears next.
+
+Recommendations appear afterwards.
+
+Finally
+
+the completed report is saved into the left sidebar history automatically.
+
+Every previous scan should remain accessible exactly like Claude conversations.
+
+---
+
+# QUALITY REQUIREMENTS
+
+No placeholder pages.
+
+No dead buttons.
+
+No broken navigation.
+
+No generic AI-generated layouts.
+
+Everything should feel handcrafted by a professional SaaS design team.
+
+The final result should immediately remind users of the elegance of ArmorIQ's marketing site combined with Claude's workspace and interaction model.

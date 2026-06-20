@@ -92,18 +92,18 @@ export default function Reports() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {completedScans.map((scan) => (
-            <div key={scan.id} className="bg-[#111111] border border-[rgba(255,255,255,0.06)] rounded-lg p-5 flex flex-col group hover:border-[rgba(255,255,255,0.15)] transition-colors">
+            <div key={scan.id} className="bg-card border border-border rounded-lg p-5 flex flex-col group hover:border-foreground/30 transition-colors">
               <div className="flex justify-between items-start mb-4">
-                <div className="p-2 bg-[#0A0A0A] rounded-md border border-[rgba(255,255,255,0.05)]">
+                <div className="p-2 bg-muted rounded-md border border-border">
                   <FileText className="w-5 h-5 text-accent" />
                 </div>
-                <div className="flex items-center gap-1 font-mono text-sm px-2 py-1 rounded bg-[#0A0A0A] border border-[rgba(255,255,255,0.05)]">
+                <div className="flex items-center gap-1 font-mono text-sm px-2 py-1 rounded bg-muted border border-border text-foreground">
                   <ShieldAlert className="w-3 h-3 text-muted-foreground" />
                   {scan.riskScore}
                 </div>
               </div>
               
-              <h3 className="font-medium text-lg truncate" title={scan.target}>{scan.target}</h3>
+              <h3 className="font-medium text-lg truncate text-foreground" title={scan.target}>{scan.target}</h3>
               
               <div className="mt-2 space-y-2 mb-6">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -111,15 +111,15 @@ export default function Reports() {
                   {format(new Date(scan.startTime), 'PPP')}
                 </div>
                 <div className="flex gap-2">
-                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-500/10 text-red-400">1 Critical</span>
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-500/10 text-red-600">1 Critical</span>
                   <span className="text-[10px] px-1.5 py-0.5 rounded bg-accent/10 text-accent">2 High</span>
                 </div>
               </div>
 
-              <div className="mt-auto pt-4 border-t border-[rgba(255,255,255,0.06)]">
+              <div className="mt-auto pt-4 border-t border-border">
                 <Button 
                   variant="ghost" 
-                  className="w-full justify-center gap-2 text-muted-foreground hover:text-white hover:bg-white/5"
+                  className="w-full justify-center gap-2 text-muted-foreground hover:text-foreground hover:bg-secondary"
                   onClick={() => generatePDF(scan)}
                 >
                   <Download className="w-4 h-4" />
@@ -129,7 +129,7 @@ export default function Reports() {
             </div>
           ))}
           {completedScans.length === 0 && (
-            <div className="col-span-full py-12 text-center text-muted-foreground border border-dashed border-[rgba(255,255,255,0.1)] rounded-lg">
+            <div className="col-span-full py-12 text-center text-muted-foreground border border-dashed border-border rounded-lg">
               No completed scan reports available yet.
             </div>
           )}

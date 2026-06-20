@@ -15,11 +15,11 @@ export default function Threats() {
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
-      case 'Critical': return 'bg-red-500/10 text-red-400 border-red-500/20';
+      case 'Critical': return 'bg-red-500/10 text-red-600 border-red-500/20';
       case 'High': return 'bg-accent/10 text-accent border-accent/20';
-      case 'Medium': return 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20';
-      case 'Low': return 'bg-blue-500/10 text-blue-400 border-blue-500/20';
-      default: return 'bg-gray-500/10 text-gray-400 border-gray-500/20';
+      case 'Medium': return 'bg-yellow-500/10 text-yellow-600 border-yellow-500/20';
+      case 'Low': return 'bg-blue-500/10 text-blue-600 border-blue-500/20';
+      default: return 'bg-gray-500/10 text-gray-500 border-gray-500/20';
     }
   };
 
@@ -32,25 +32,25 @@ export default function Threats() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4">
-          <div className="flex-1 flex items-center gap-4 bg-[#111111] border border-[rgba(255,255,255,0.06)] p-2 rounded-md">
+          <div className="flex-1 flex items-center gap-4 bg-card border border-border p-2 rounded-md">
             <Search className="w-4 h-4 text-muted-foreground ml-2" />
             <input
               type="text"
               placeholder="Search threats by type or target..."
-              className="flex-1 bg-transparent border-none text-sm focus:outline-none text-white placeholder:text-muted-foreground"
+              className="flex-1 bg-transparent border-none text-sm focus:outline-none text-foreground placeholder:text-muted-foreground"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#111111] border border-[rgba(255,255,255,0.06)] rounded-md text-sm hover:bg-white/5 transition-colors">
+          <button className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-md text-sm hover:bg-secondary transition-colors text-foreground">
             <Filter className="w-4 h-4" />
             Filters
           </button>
         </div>
 
-        <div className="bg-[#111111] border border-[rgba(255,255,255,0.06)] rounded-lg overflow-hidden">
+        <div className="bg-card border border-border rounded-lg overflow-hidden">
           <table className="w-full text-sm text-left">
-            <thead className="bg-[#0A0A0A] text-muted-foreground font-medium border-b border-[rgba(255,255,255,0.06)]">
+            <thead className="bg-muted/50 text-muted-foreground font-medium border-b border-border">
               <tr>
                 <th className="px-4 py-3 w-10"></th>
                 <th className="px-4 py-3">Severity</th>
@@ -60,12 +60,12 @@ export default function Threats() {
                 <th className="px-4 py-3">Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[rgba(255,255,255,0.06)]">
+            <tbody className="divide-y divide-border">
               {filteredThreats.map((threat) => (
-                <tr key={threat.id} className="hover:bg-white/[0.02] transition-colors cursor-pointer group">
+                <tr key={threat.id} className="hover:bg-secondary transition-colors cursor-pointer group">
                   <td className="px-4 py-4 text-center">
                     <AlertTriangle className={cn("w-4 h-4 opacity-50", 
-                      threat.severity === 'Critical' ? "text-red-400" : 
+                      threat.severity === 'Critical' ? "text-red-500" : 
                       threat.severity === 'High' ? "text-accent" : "text-muted-foreground"
                     )} />
                   </td>
@@ -77,7 +77,7 @@ export default function Threats() {
                       {threat.severity}
                     </span>
                   </td>
-                  <td className="px-4 py-4 font-medium">{threat.type}</td>
+                  <td className="px-4 py-4 font-medium text-foreground">{threat.type}</td>
                   <td className="px-4 py-4 text-muted-foreground font-mono text-xs">{threat.target}</td>
                   <td className="px-4 py-4 text-muted-foreground">{threat.discovered}</td>
                   <td className="px-4 py-4">

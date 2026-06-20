@@ -51,7 +51,7 @@ export default function Scans() {
                 New Scan
               </Button>
             </DialogTrigger>
-            <DialogContent className="bg-[#111111] border-[rgba(255,255,255,0.06)] text-white">
+            <DialogContent className="bg-card border-border text-foreground">
               <DialogHeader>
                 <DialogTitle>Configure New Scan</DialogTitle>
               </DialogHeader>
@@ -62,7 +62,7 @@ export default function Scans() {
                     placeholder="e.g., example.com or 192.168.1.1" 
                     value={newScanTarget}
                     onChange={(e) => setNewScanTarget(e.target.value)}
-                    className="bg-[#0A0A0A] border-[rgba(255,255,255,0.1)]"
+                    className="bg-background border-border"
                   />
                 </div>
                 <div className="space-y-2">
@@ -76,7 +76,7 @@ export default function Scans() {
                           "cursor-pointer border rounded-md p-3 text-center transition-colors text-sm",
                           newScanType === type 
                             ? "border-accent bg-accent/10 text-accent" 
-                            : "border-[rgba(255,255,255,0.1)] hover:border-[rgba(255,255,255,0.2)] text-muted-foreground"
+                            : "border-border hover:border-foreground/30 text-muted-foreground"
                         )}
                       >
                         {type}
@@ -97,20 +97,20 @@ export default function Scans() {
           </Dialog>
         </div>
 
-        <div className="flex items-center gap-4 bg-[#111111] border border-[rgba(255,255,255,0.06)] p-2 rounded-md">
+        <div className="flex items-center gap-4 bg-card border border-border p-2 rounded-md">
           <Search className="w-4 h-4 text-muted-foreground ml-2" />
           <input
             type="text"
             placeholder="Search scans by target or status..."
-            className="flex-1 bg-transparent border-none text-sm focus:outline-none text-white placeholder:text-muted-foreground"
+            className="flex-1 bg-transparent border-none text-sm focus:outline-none text-foreground placeholder:text-muted-foreground"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
 
-        <div className="bg-[#111111] border border-[rgba(255,255,255,0.06)] rounded-lg overflow-hidden">
+        <div className="bg-card border border-border rounded-lg overflow-hidden">
           <table className="w-full text-sm text-left">
-            <thead className="bg-[#0A0A0A] text-muted-foreground font-medium border-b border-[rgba(255,255,255,0.06)]">
+            <thead className="bg-muted/50 text-muted-foreground font-medium border-b border-border">
               <tr>
                 <th className="px-4 py-3">Target</th>
                 <th className="px-4 py-3">Status</th>
@@ -121,9 +121,9 @@ export default function Scans() {
                 <th className="px-4 py-3 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[rgba(255,255,255,0.06)]">
+            <tbody className="divide-y divide-border">
               {filteredScans.map((scan) => (
-                <tr key={scan.id} className="hover:bg-white/[0.02] transition-colors group">
+                <tr key={scan.id} className="hover:bg-secondary transition-colors group">
                   <td className="px-4 py-3 font-medium flex items-center gap-2">
                     <Globe className="w-4 h-4 text-muted-foreground" />
                     {scan.target}
@@ -131,9 +131,9 @@ export default function Scans() {
                   <td className="px-4 py-3">
                     <span className={cn(
                       "px-2 py-1 rounded text-xs font-medium inline-flex items-center gap-1.5",
-                      scan.status === 'completed' && "bg-green-500/10 text-green-400 border border-green-500/20",
+                      scan.status === 'completed' && "bg-green-500/10 text-green-600 border border-green-500/20",
                       scan.status === 'running' && "bg-accent/10 text-accent border border-accent/20",
-                      scan.status === 'failed' && "bg-red-500/10 text-red-400 border border-red-500/20"
+                      scan.status === 'failed' && "bg-red-500/10 text-red-600 border border-red-500/20"
                     )}>
                       {scan.status === 'running' && <Activity className="w-3 h-3 animate-pulse" />}
                       {scan.status.charAt(0).toUpperCase() + scan.status.slice(1)}
@@ -142,7 +142,7 @@ export default function Scans() {
                   <td className="px-4 py-3 text-muted-foreground">{scan.type}</td>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2">
-                      <div className="w-16 h-1.5 bg-[#0A0A0A] rounded-full overflow-hidden">
+                      <div className="w-16 h-1.5 bg-muted rounded-full overflow-hidden">
                         <div 
                           className={cn(
                             "h-full rounded-full",
@@ -157,7 +157,7 @@ export default function Scans() {
                   <td className="px-4 py-3 text-muted-foreground">{new Date(scan.startTime).toLocaleString()}</td>
                   <td className="px-4 py-3 text-muted-foreground font-mono">{scan.duration}</td>
                   <td className="px-4 py-3 text-right">
-                    <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity h-8 px-2 text-muted-foreground hover:text-white">
+                    <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity h-8 px-2 text-muted-foreground hover:text-foreground">
                       View Details
                     </Button>
                   </td>
