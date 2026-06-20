@@ -2,9 +2,10 @@ import { MainLayout } from "@/components/layout/main-layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
-import { Shield, Key, Bell, CreditCard, Save, Copy, Eye, EyeOff, Trash2, RefreshCw, Plus } from "lucide-react";
+import { Shield, Key, Bell, CreditCard, Save, Copy, Eye, EyeOff, Trash2, RefreshCw, Plus, Sun, Moon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { useTheme } from "@/hooks/use-theme";
 
 const TABS = ['General', 'Security', 'Notifications', 'API Keys', 'Billing'];
 
@@ -12,6 +13,7 @@ function GeneralTab() {
   const [wsName, setWsName] = useState(() => localStorage.getItem('ag_ws_name') || 'Production');
   const [scanType, setScanType] = useState(() => localStorage.getItem('ag_scan_type') || 'Quick Scan');
   const [saved, setSaved] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   const save = () => {
     localStorage.setItem('ag_ws_name', wsName);
@@ -22,6 +24,42 @@ function GeneralTab() {
 
   return (
     <div className="space-y-6">
+
+      {/* Theme */}
+      <div className="bg-card border border-border rounded-lg p-6 space-y-4">
+        <h2 className="text-lg font-semibold border-b border-border pb-4 text-foreground">Appearance</h2>
+        <div>
+          <div className="text-sm font-medium text-foreground mb-3">Theme</div>
+          <div className="grid grid-cols-2 gap-3 max-w-xs">
+            {(['light', 'dark'] as const).map(t => (
+              <button
+                key={t}
+                onClick={() => setTheme(t)}
+                className={cn(
+                  "flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all",
+                  theme === t
+                    ? "border-accent bg-accent/5"
+                    : "border-border bg-background hover:border-border/60"
+                )}
+              >
+                <div className={cn(
+                  "w-10 h-10 rounded-full flex items-center justify-center",
+                  t === 'light' ? "bg-amber-100 text-amber-600" : "bg-slate-800 text-slate-200"
+                )}>
+                  {t === 'light' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                </div>
+                <span className={cn("text-xs font-semibold capitalize", theme === t ? "text-accent" : "text-muted-foreground")}>
+                  {t}
+                </span>
+                {theme === t && (
+                  <span className="text-[10px] text-accent font-bold uppercase tracking-wider">Active</span>
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="bg-card border border-border rounded-lg p-6 space-y-6">
         <h2 className="text-lg font-semibold border-b border-border pb-4 text-foreground">Workspace Settings</h2>
         <div className="space-y-4">
