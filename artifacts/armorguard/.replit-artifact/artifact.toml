@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "ArmorGuard"
+version = "1.0.0"
+id = "artifacts/armorguard"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21846
+
+[services.development]
+run = "pnpm --filter @workspace/armorguard run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/armorguard", "run", "build" ]
+publicDir = "artifacts/armorguard/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21846"
+BASE_PATH = "/"
